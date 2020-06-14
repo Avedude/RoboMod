@@ -15,9 +15,10 @@ Find this code:
 
 `TOKEN = 'your token'`
 `clientid = 'your client ID'`
+`botownerid = 'your user ID'`
 
-Paste your bots token in TOKEN, and the client ID in clientid.
-Next, open up a terminal in your bots directory. RUn the following command:
+Paste your bots token in TOKEN, the client ID in clientid, and your user ID in botownerid.
+Next, open up a terminal in your bots directory. Run the following command:
 
 Windows:
 `py -3 -m pip install -U discord.py`
