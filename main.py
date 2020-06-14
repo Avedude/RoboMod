@@ -4,6 +4,7 @@ import asyncio
 
 TOKEN  = 'your token'
 clientid = 'your client ID'
+botownerid = 'your user ID'
 
 client = commands.Bot(command_prefix = 'r*')
 client.remove_command("help")
@@ -33,8 +34,8 @@ async def help(ctx, pass_context = True):
 
 @client.command()
 async def ownercommands(ctx, pass_conntext = True):
-    if ctx.message.author.id = '698952526208303264':
-        await ctx.send('Owner Commands: \n shutdown \n destroy \n ownercommands \n eval')
+    if ctx.message.author.id = botownerid:
+        await ctx.send('Owner Commands: \n shutdown \n ownercommands \n eval')
 
 
 @client.command()
@@ -65,6 +66,7 @@ async def say(ctx, pass_context = True, *, arg):
     print('Say command used. Message content:')
     print(reason)
     print('-------')
+    await ctx.send(arg)
 
 
 @client.command()
@@ -88,14 +90,14 @@ async def clear(ctx, amount=100, pass_context = True):
 
 @client.command()
 async def shutdown(ctx, pass_context = True):
-    if ctx.message.author.id = '698952526208303264':
-        await ctx.send('RoboMod has been shutdown.')
+    if ctx.message.author.id = botownerid:
+        await ctx.send('Bot has been shutdown.')
         await client.logout
 
 
 @client.command()
 @commands.has_permissions(manage_channels = True)
-async def createchannel(ctx, *, arg):
+async def createchannel(ctx, *, arg, pass_context = True):
     guild = ctx.message.guild    
     await ctx.message.delete()
     await guild.create_text_channel(arg)
@@ -107,6 +109,7 @@ async def submitfeedback(ctx, pass_context = True, *, feedback):
     await ctx.send('Thank you for the feedback! The bot owner will look at it as soon as they can.')
     print('Feedback:')
     print(feedback)
+    print('-------')
 
 
 @client.command()
